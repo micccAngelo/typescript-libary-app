@@ -1,6 +1,6 @@
 import BaseURL from './Base URL/BaseURL';
 
-const PostToCartAPI = async (user_id: number, book_id: number): Promise<boolean> => {
+const PostToCartAPI = async (user_id: String, book_id: number): Promise<boolean> => {
   try {
     const response = await BaseURL.post(
       `/perpustakaan/api/v1/cart`,
@@ -21,7 +21,7 @@ const PostToCartAPI = async (user_id: number, book_id: number): Promise<boolean>
   } catch (error) {
     console.log(error);
   }
-  return false; // Add this line to fix the error
+  return false;
 };
 
 export default PostToCartAPI;

@@ -9,7 +9,7 @@ export const DeleteAPI = async (book_id: number): Promise<any> => {
     );
     const { data } = response;
     if (data.status) {
-      console.log(data.message === 'Success');
+      console.log(data.message);
       return true;
     } else {
       return Promise.reject();

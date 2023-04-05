@@ -47,46 +47,46 @@ function ListBook(): JSX.Element {
     navigate(`/book/${id}`);
   };
 
-  // interface ButtonAddToCartProps {
-  //   book: Book;
-  // }
+  interface ButtonAddToCartProps {
+    book: Book;
+  }
 
-  // const ButtonAddToCart = (props: ButtonAddToCartProps) => {
-  //   const [loading, setLoading] = useState<boolean>(false);
+  const ButtonAddToCart = (props: ButtonAddToCartProps) => {
+    const [loading, setLoading] = useState<boolean>(false);
 
-  //   const addToCart = (id: number) => {
-  //       setLoading(true);
-  //       const user_id = localStorage.getItem('user_id');
-  //       if (user_id !== null) {
-  //         PostToCartAPI(user_id, id)
-  //           .then((success: boolean) => {
-  //             if (success) {
-  //               setShowModal(true);
-  //             } else {
-  //               setModalFail(true);
-  //             }
-  //             setLoading(false);
-  //           })
-  //           .catch((error: any) => {
-  //             console.log(error);
-  //             setModalFail(true);
-  //             setLoading(false);
-  //           });
-  //       } else {
-  //         console.log('user_id not found in local storage');
-  //       }
-  //     };
+    const addToCart = (id: number) => {
+        setLoading(true);
+        const user_id = localStorage.getItem('user_id');
+        if (user_id !== null) {
+          PostToCartAPI(user_id, id)
+            .then((success: boolean) => {
+              if (success) {
+                setShowModal(true);
+              } else {
+                setModalFail(true);
+              }
+              setLoading(false);
+            })
+            .catch((error: any) => {
+              console.log(error);
+              setModalFail(true);
+              setLoading(false);
+            });
+        } else {
+          console.log('user_id not found in local storage');
+        }
+      };
 
-  //   return (
-  //     <Buttons
-  //       className="add"
-  //       variant="success"
-  //       onClick={() => addToCart(props.book.id)}
-  //       disabled={props.book.stok === 0 || loading}
-  //       label={loading ? <Loadings variant="danger" /> : 'Add to cart'}
-  //     />
-  //   );
-  // };
+    return (
+      <Buttons
+        className="add"
+        variant="success"
+        onClick={() => addToCart(props.book.id)}
+        disabled={props.book.stok === 0 || loading}
+        label={'Add to cart'}
+      />
+    );
+  };
 
   const rangeStart = Math.max(currentPage - 2, 1);
   const rangeEnd = Math.min(rangeStart + 4, totalPages);
@@ -124,7 +124,7 @@ function ListBook(): JSX.Element {
                   <td>{book.stok}</td>
                   <td>
                     <Buttons className='detail' variant='primary' label='Details' onClick={() => handleDetailsClick(book.id)}/>
-                    {/* <ButtonAddToCart book={book}/> */}
+                    <ButtonAddToCart book={book}/>
                   </td>
                 </tr>
               ))
