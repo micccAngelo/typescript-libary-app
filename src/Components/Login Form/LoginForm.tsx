@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Buttons from '../Reusable/Buttons';
+import Buttons from '../../Reusable/Buttons';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import Modals from '../Reusable/Modals';
+import Modals from '../../Reusable/Modals';
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import LoginAPI from '../API Services/LoginAPI';
+import LoginAPI from '../../API Services/LoginAPI';
 import './LoginForm.css';
 
 interface LoginFormProps {
   onLogin: (userId: string) => void;
 }
 
-function LoginForm({ onLogin }: LoginFormProps) {
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);

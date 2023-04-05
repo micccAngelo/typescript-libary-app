@@ -1,7 +1,7 @@
 import BaseURL from './Base URL/BaseURL'
 import { AxiosResponse } from 'axios';
 
-export const DeleteAPI = async (book_id: string): Promise<boolean> => {
+export const DeleteAPI = async (book_id: number): Promise<boolean> => {
   const user_id = localStorage.getItem('user_id');
   try {
     const response: AxiosResponse = await BaseURL.delete(

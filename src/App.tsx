@@ -2,8 +2,14 @@ import './App.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import LoginForm from './Components/LoginForm';
+import { Navigate } from 'react-router-dom';
+import LoginForm from './Components/Login Form/LoginForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Appbar from './Components/Appbar/Appbar';
+import ListBook from './Components/List Book/ListBook';
+import BookDetail from './Components/Detail/BookDetail';
+import NotFound from './Components/Not Found/NotFound';
+import Cart from './Components/Cart/Cart';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -34,9 +40,17 @@ function App() {
   const isLoginPage = window.location.pathname === '/login';
 
   return (
-    <div className="App">
-      <LoginForm onLogin={handleLogin}/>
-    </div>
+    <>
+    {!isLoginPage && <Appbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}
+    <Routes>
+      <Route path='/' element={<Navigate to='/book' />} />
+      <Route path='/book' element={<ListBook />} />
+      <Route path='/login' element={<LoginForm onLogin={handleLogin} />} />
+      <Route path='/book/:id' element={<BookDetail />}/>
+      <Route path='/cart' element={<Cart />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
+  </>
   );
 }
 
