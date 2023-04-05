@@ -2,11 +2,11 @@ import './ListBook.css'
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
-import Pagination from 'react-bootstrap/Pagination';
 import Buttons from '../../Reusable/Buttons';
 import Modals from '../../Reusable/Modals';
 import GetBooksAPI from '../../API Services/GetBookAPI';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { PaginationControl } from 'react-bootstrap-pagination-control';
 import Loadings from '../../Reusable/Loadings';
 import PostToCartAPI from '../../API Services/PostToCartAPI';
 
@@ -88,9 +88,6 @@ function ListBook(): JSX.Element {
     );
   };
 
-  const rangeStart = Math.max(currentPage - 2, 1);
-  const rangeEnd = Math.min(rangeStart + 4, totalPages);
-
   return (
     <div>
       <Table striped bordered hover>
@@ -144,29 +141,14 @@ function ListBook(): JSX.Element {
         message="Item is already in cart."
       />
       <div className='pagination'>
-      {/* <Pagination className='mt-4'>
-        {currentPage > 1 && (
-          <Pagination.Prev
-            onClick={() => handlePageChange(currentPage - 1)}
-          />
-        )}
-  
-        {[...Array(totalPages).keys()].slice(rangeStart - 1, rangeEnd).map((pageNumber) => (
-          <Pagination.Item
-            key={pageNumber + 1}
-            active={pageNumber + 1 === currentPage}
-            onClick={() => handlePageChange(pageNumber + 1)}
-          >
-            {pageNumber + 1}
-          </Pagination.Item>
-        ))}
-  
-        {currentPage < totalPages && (
-          <Pagination.Next
-            onClick={() => handlePageChange(currentPage + 1)}
-          />
-        )}
-      </Pagination> */}
+        <PaginationControl
+          page={currentPage}
+          between={2}
+          total={260}
+          limit={20}
+          changePage={(page) => handlePageChange(page)}
+          ellipsis={1}
+        />
       </div>
     </div>
   );

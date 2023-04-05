@@ -1,0 +1,41 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.table{
+    text-align: center;
+}
+
+.title{
+    width: 20%;
+}
+
+.book_image{
+    width: 70px;
+    height: 100px;
+}
+
+.publish_year{
+    width: 15%;
+}
+
+.stocks{
+    width: 7%;
+}
+
+.author{
+    width: 20%;
+}
+
+.detail{
+    margin: 3px;
+}
+
+.add{
+    margin: 3px;
+}
+
+.action{
+    width: 15%;
+}
