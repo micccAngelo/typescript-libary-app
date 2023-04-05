@@ -37,7 +37,6 @@ interface CartItem {
       const success: boolean = await DeleteAPI(book_id);
       console.log(success)
       if (success) {
-        console.log(success)
         setShowModal(true);
         GetCartAPI().then((data: CartItem[]) => {
           setCartItems(data);
